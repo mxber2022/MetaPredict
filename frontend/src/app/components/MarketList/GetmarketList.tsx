@@ -15,6 +15,7 @@ import CommentPop from '../Comment/CommentPop';
 import WithdrawWinning from '../WithdrawWinning/WithdrawWinning';
 import AI from '../AI/AI';
 import Popup from '../Popup/Popup';
+import Leadership from '../Leadership/Leadership';
 
 const MY_QUERY = gql`
   query MyQuery {
@@ -154,7 +155,12 @@ function GetmarketList() {
       <Popup isVisible={isPopupVisible} onClose={closePopupAi}>
         {aiQuestion && <AI question={aiQuestion} />}
       </Popup>
-      {selectedMarket && <CommentPop market={selectedMarket} onClose={closePopup} />}
+      {/* {selectedMarket && <CommentPop market={selectedMarket} onClose={closePopup} />} */}
+      
+      {
+        selectedMarket && <Leadership marketId={selectedMarket.marketId}  />
+      }
+      
       <TransactionStatus status={status} writeContractData={writeContractData} />
     </section>
   );

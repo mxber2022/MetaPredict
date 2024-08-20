@@ -6,6 +6,7 @@ import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import TokenApprove from "./components/TokenApprove/TokenApprove";
 import Tabs from "./components/Tabs/Tabs";
+import Leadership from "./components/Leadership/Leadership";
 
 export default function Home() {
   return (
@@ -17,6 +18,7 @@ export default function Home() {
       {/* <Header /> */}
       <Footer />
       {/* <TokenApprove/> */}
+  
     </>
   );
 }
