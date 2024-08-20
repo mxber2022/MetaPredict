@@ -1,10 +1,8 @@
 Flask==2.2.3
 langchain-openai==0.1.22
-langchain-sql-database==0.2.0  # Updated to a plausible version
 langchain-experimental==0.0.64
 python-dotenv==1.0.0
-openmeteo-requests==0.0.1       # Confirm this is the latest version or update accordingly
+openmeteo-requests==0.0.1
 requests-cache==0.7.0
-retry-requests==0.0.3          # Confirm this is the latest version or update accordingly
+retry-requests==0.0.3
 pandas==2.1.4
-sqlite3==3.35.5                # Typically not needed as part of requirements.txt; included for clarity
