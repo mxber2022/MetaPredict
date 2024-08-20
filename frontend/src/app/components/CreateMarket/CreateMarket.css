@@ -1,0 +1,100 @@
+
+
+.createMarket {
+
+    padding: 6rem 0;
+    background-color: #000;
+    color: #fff;
+}
+
+ 
+.createMarket__container {
+
+    max-width: 1600px;
+    padding: 0 2rem;
+    width: 100%;
+    margin: 0 auto;
+}
+
+
+.createMarket form {
+
+    max-width: 600px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.createMarket h2 {
+
+    color: #fff;
+    font-size: 3rem;
+    font-weight: bold;
+    max-width: 600px;
+    margin: 0 auto;
+    width: 100%;
+    margin-bottom: 2rem;
+}
+
+.createMarket button {
+
+    background-color: #2BEB7C;
+    color: #000;
+    font-weight: bold;
+    width: max-content;
+    box-shadow: 0 0 10px #2BEB7C;
+}
+
+.createMarket label {
+
+    color: #fff;
+    margin-bottom: 0.5rem;
+    display: inline-block;
+}
+
+.createMarket input {
+
+    color: #000;
+}
+
+
+@media (max-width: 1440px) {
+
+    .createMarket h2 {
+
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 980px) {
+
+    .createMarket h2 {
+
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 500px) {
+
+    .createMarket h2 {
+
+        font-size: 1.2rem;
+    }
+
+    .createMarket__container {
+
+        padding: 0 1rem;
+    }
+}
+
+.outcome-input {
+    display: flex;
+}
+
+.btremove{
+    margin-left: 20px;
+}
+
+.btnright{
+    float: right;
+}
+

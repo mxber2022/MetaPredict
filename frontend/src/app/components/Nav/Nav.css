@@ -1,0 +1,151 @@
+
+
+.nav {
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #0e0d0d;
+    padding: 1rem 0;
+    color: #fff;
+    box-shadow: 0 0 50px #00fff74f;
+    z-index: 999;
+}
+
+.nav__container {
+    
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    gap: 1rem;
+}
+
+.nav__left {
+
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+}
+
+.nav__left img {
+
+    max-width: 150px;
+    width: 100%;
+}
+
+.nav__left input {
+
+    margin: 0;
+    padding: 0.4rem 1rem;
+    color: #000;
+}
+
+wui-connect-button button {
+
+    box-shadow: 0 0 10px #2BEB7C !important;
+    background-color: #2BEB7C !important;
+}
+
+
+@media (max-width: 500px) {
+
+    .nav__container {
+
+        padding: 0 1rem;
+    }
+
+    .nav__left {
+
+        gap: 1.5rem;
+    }
+
+    .nav__left input {
+
+        padding: 0.3rem 0.6rem;
+    }
+}
+
+/*
+    BETBAZAAR Word styling starts
+*/
+
+
+.nav__logo {
+    font-size: 32px;
+    font-weight: 900;
+    color: #e63946;
+    font-family: 'Montserrat', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    position: relative;
+    display: inline-block;
+    background: linear-gradient(45deg, #e63946, #f1faee);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: all 0.3s ease;
+}
+
+.nav__logo::before {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0%;
+    height: 3px;
+    background-color: #e63946;
+    transition: width 0.3s ease;
+}
+
+.nav__logo:hover::before {
+    width: 100%;
+}
+
+.nav__logo:hover {
+    color: #1d3557;
+    background: linear-gradient(45deg, #457b9d, #a8dadc);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transform: scale(1.05);
+}
+
+/*
+    BETBAZAAR Word styling Ends
+*/
+
+.nav__search input {
+    width: 350px;
+    padding: 10px 15px;
+    border: 2px solid #f1faee; /* White border */
+    border-radius: 25px;
+    font-size: 16px;
+    background-color: #000; /* Black background */
+    color: #f1faee; /* White text color */
+    font-family: 'Montserrat', sans-serif;
+    outline: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.nav__search input::placeholder {
+    color: #a8dadc;
+    font-style: italic;
+}
+
+.nav__search input:hover {
+    background-color: #333; /* Slightly lighter black on hover */
+    color: #f1faee;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    border-color: #f1faee; /* Keep border white on hover */
+}
+
+.nav__search input:focus {
+    background-color: #080a0c; /* Deep blue background on focus */
+    color: #f1faee;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    border-color: #e63946; /* Red border on focus */
+    transform: scale(1.05);
+}
