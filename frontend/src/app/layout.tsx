@@ -9,9 +9,9 @@ import Web3ModalProvider from '@/context'
 import ApolloProviderWrapper from './lib/ApolloProviderWrapper'
 
 export const metadata: Metadata = {
-  title: 'VERIDICT',
-  description: 'The Worlds Prediction Market',
-  keywords: ['prediction market', 'betting platform', 'sports predictions', 'worlds prediction market']
+  title: 'ClimaCompass',
+  description: 'The Worlds Climate Prediction Market',
+  keywords: ['Prediction Market', 'Climate platform']
 }
 
 export default function RootLayout({

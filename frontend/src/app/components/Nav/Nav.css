@@ -83,7 +83,7 @@ wui-connect-button button {
     letter-spacing: 3px;
     position: relative;
     display: inline-block;
-    background: linear-gradient(45deg, #e63946, #f1faee);
+    background: linear-gradient(45deg,  #00fff74f, #f1faee);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     transition: all 0.3s ease;
