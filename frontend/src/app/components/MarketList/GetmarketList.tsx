@@ -46,6 +46,7 @@ function GetmarketList() {
   const [amount, setAmount] = useState('');
   const [aiQuestion, setAiQuestion] = useState<string | null>(null);
   const [isPopupVisible, setIsPopupVisible] = useState(false);
+  const [isPopupVisible1, setIsPopupVisible1] = useState(false);
 
   const handleButtonClick = useCallback(
     async (marketId: string, outcome: string, amount: string, index: number) => {
@@ -75,9 +76,7 @@ function GetmarketList() {
     setSelectedMarket(null);
   };
 
-  const handleQuestionClick = (market: MarketCreated) => {
-    setSelectedMarket(market);
-  };
+
 
   // const handleAiClick = (question: string) => {
   //   setAiQuestion(question); // Set the question to pass to the AI component
@@ -93,6 +92,22 @@ function GetmarketList() {
     setAiQuestion(null);
     console.log("Popup should be hidden:", isPopupVisible); // Debug
   };
+
+
+
+  
+  const closeRankPopup = () => {
+    setIsPopupVisible1(false);
+    setSelectedMarket(null);
+    console.log("Popup should be hidden:", isPopupVisible); // Debug
+  };
+
+  const handleQuestionClick = (market: MarketCreated) => {
+    setSelectedMarket(market);
+    setIsPopupVisible1(true);
+  };
+
+
 
   return (
     <section className='marketList'>
@@ -157,9 +172,13 @@ function GetmarketList() {
       </Popup>
       {/* {selectedMarket && <CommentPop market={selectedMarket} onClose={closePopup} />} */}
       
-      {
+      
+        <Popup isVisible={isPopupVisible1} onClose={closeRankPopup}>
+        { 
         selectedMarket && <Leadership marketId={selectedMarket.marketId}  />
-      }
+        }
+        </Popup>
+      
       
       <TransactionStatus status={status} writeContractData={writeContractData} />
     </section>

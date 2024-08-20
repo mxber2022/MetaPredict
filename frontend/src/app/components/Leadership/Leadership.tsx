@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { gql, useQuery } from '@apollo/client';
-
+import { formatEther } from 'viem'
 // Define TypeScript types for the data
 type BetPlaced = {
   amount: string;
@@ -62,11 +62,11 @@ function Leadership({ marketId }: LeadershipProps) {
 
   return (
     <div>
-      <h1>Leadership for Market ID: {marketId}</h1>
-      <ul>
+      <p>Leadership for Market ID: {marketId}</p>
+      <ul className='ulmid'>
         {sortedUsers.map(([user, totalBet]) => (
           <li key={user}>
-            User: {user}, Total Bet: {totalBet}
+            User: {user}, Total Bet: {formatEther(BigInt(totalBet))} ETH
           </li>
         ))}
       </ul>
