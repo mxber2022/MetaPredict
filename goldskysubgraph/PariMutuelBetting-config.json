@@ -1,0 +1,17 @@
+{
+  "version": "1",
+  "name": "PariMutuelBetting",
+  "abis": {
+    "PariMutuelBetting": {
+      "path": "./abi.json"
+    }
+  },
+  "instances": [
+    {
+      "abi": "PariMutuelBetting",
+      "address": "0x26f8b0177d2173e0aB9B3Bb63899dB98DdEe3898",
+      "startBlock": 6335407,
+      "chain": "sepolia"
+    }
+  ]
+}

@@ -10,6 +10,7 @@ interface GetMarketStatusProps {
 }
 
 const GetMarketStatus: React.FC<GetMarketStatusProps> = ({ marketId }) => {
+
     const { data, isError, isLoading } = useReadContract({
         abi,
         address: myconfig.CONTRACT_ADDRESS_BASE as Address,
@@ -19,7 +20,10 @@ const GetMarketStatus: React.FC<GetMarketStatusProps> = ({ marketId }) => {
 
     if (isLoading) return <div>Loading...</div>;
     if (isError) return <div>Error loading market status</div>;
-
+    console.log("data:", data);
+    
+    
+    console.log("error", isError);
     //@ts-ignore
     const totalPool = formatUnits(data?.[5], 18);
     //@ts-ignore
