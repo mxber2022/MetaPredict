@@ -72,10 +72,8 @@ function TransactionStatus({ status, writeContractData }: { status: any, writeCo
                 <p>Transaction Confirmed</p>
                 <p>
                 {/* Success <br /><br /> */}
-                {/* <a href="#" onClick={closePopUp}>Close and return to the website</a> */}
-
+                <a href="#" onClick={closePopUp}>Close and return to the website</a>
               </p>
-              <p>Don't close the window <span className="dots"><span className="dot"></span><span className="dot"></span><span className="dot"></span></span></p>
               </>
               }
             </div>
