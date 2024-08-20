@@ -13,6 +13,7 @@ import GetMarketStatus from './GetMarketStatus';
 import TransactionStatus from '../TransactionStatus/TransactionStatus';
 import CommentPop from '../Comment/CommentPop';
 import WithdrawWinning from '../WithdrawWinning/WithdrawWinning';
+import AI from '../AI/AI';
 
 const MY_QUERY = gql`
   query MyQuery {
@@ -41,6 +42,7 @@ function GetmarketList() {
   const { loading, error, data } = useQuery<MyQueryData>(MY_QUERY);
   const { writeContract, isSuccess, data: writeContractData, status } = useWriteContract(); // create market
   const [amount, setAmount] = useState('');
+  const [aiQuestion, setAiQuestion] = useState<string | null>(null);
 
   const handleButtonClick = useCallback(
     async (marketId: string, outcome: string, amount: string, index: number) => {
@@ -74,6 +76,10 @@ function GetmarketList() {
     setSelectedMarket(market);
   };
 
+  const handleAiClick = (question: string) => {
+    setAiQuestion(question); // Set the question to pass to the AI component
+  };
+
   return (
     <section className='marketList'>
       <div className='marketList__container'>
@@ -99,7 +105,7 @@ function GetmarketList() {
                   <div>
                     <h3>Amount</h3>
                   </div>
-                  <div className='amountText'>
+                  <div className='amountText'> 
                     <input
                       type="number"
                       onChange={(e) => setAmount(e.target.value)}
@@ -119,11 +125,15 @@ function GetmarketList() {
                   <GetMarketStatus marketId={Number(market.marketId)} />
                 </div>
                 <WithdrawWinning MarketId={market.marketId} />
+                <button onClick={() => handleAiClick(market.question)}>AI</button>
+                {aiQuestion && <AI question={aiQuestion} />}
               </div>
             );
           })}
         </div>
       </div>
+      {/* Render the AI component when a question is selected */}
+      
       {selectedMarket && <CommentPop market={selectedMarket} onClose={closePopup} />}
       <TransactionStatus status={status} writeContractData={writeContractData} />
     </section>

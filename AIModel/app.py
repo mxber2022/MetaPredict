@@ -1,4 +1,5 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS  # Import the CORS class
 from langchain_openai import OpenAI
 from langchain.sql_database import SQLDatabase
 from langchain_experimental.sql import SQLDatabaseChain
@@ -9,6 +10,7 @@ import os
 load_dotenv()
 
 app = Flask(__name__)
+CORS(app)  # Enable CORS for all routes by default
 
 # Initialize the database and LLM
 dburi = "sqlite:///testDatabase.db" 
@@ -27,6 +29,7 @@ def query():
     try:
         # Run the query
         result = db_chain.run(query)
+        print(result)
         return jsonify({"result": result})
     except Exception as e:
         return jsonify({"error": str(e)}), 500
