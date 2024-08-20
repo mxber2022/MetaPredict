@@ -107,7 +107,7 @@ function GetmarketList() {
                     {isValidImageUrl ? (
                       <Image src={market.imageUri.concat('?raw=true')} alt="Market Image" width={50} height={50} />
                     ) : (
-                      <div className='placeholderImage' style={{ width: 50, height: 50, backgroundColor: 'gray' }} />
+                      <div className='Market Image' style={{ width: 50, height: 50, backgroundColor: 'gray' }} />
                     )}
                   </div>
                   <div className='amountText'>
