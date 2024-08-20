@@ -12,7 +12,7 @@ export default function Home() {
       <Nav/>
       <Createmarket />
       <GetmarketList />
-      <Header />
+      {/* <Header /> */}
       <Footer />
       {/* <TokenApprove/> */}
     </>

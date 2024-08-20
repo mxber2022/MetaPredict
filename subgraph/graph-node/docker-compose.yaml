@@ -20,7 +20,7 @@ services:
       postgres_pass: 'let-me-in'
       postgres_db: 'graph-node'
       ipfs: 'ipfs:5001'
-      ethereum: 'testnet:https://public-node.testnet.rsk.co'
+      ethereum: 'testnet:https://rpc.testnet.rootstock.io/i2nxeWNQj3x3m2BPD80Tc0lVOBoNmf-T'
       GRAPH_LOG: info
       GRAPH_ETHEREUM_GENESIS_BLOCK_NUMBER: 1
 

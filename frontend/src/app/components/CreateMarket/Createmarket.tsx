@@ -35,7 +35,7 @@ function Createmarket() {
         
     // Handler to create market
 
-    const { writeContract, isSuccess, data: writeContractData, status: writeContractStatus } = useWriteContract()
+    const { writeContract, isSuccess, data: writeContractData, status: writeContractStatus, error } = useWriteContract()
 
     //@ts-ignore
     const createMarket = async (event) => {
@@ -51,6 +51,7 @@ function Createmarket() {
             ],
          })
     }; 
+    console.log(error);
     
     return (
         <section className='createMarket'>

@@ -1,7 +1,7 @@
 import { ApolloClient, InMemoryCache } from '@apollo/client';
 
 const apolloclient = new ApolloClient({
-  uri: 'http://localhost:8000/subgraphs/name/PariMutuelBetting',
+  uri: 'https://api.goldsky.com/api/public/project_clzhsxd1aulmx01zzbhjb8f9y/subgraphs/friendtech-sepolia/1.0/gn',
   cache: new InMemoryCache(),
 });
 
