@@ -1,0 +1,28 @@
+type MarketCreated @entity {
+  id: ID!
+  marketId: String!
+  question: String!
+  outcomes: String!  # Outcomes is a single string
+  imageUri: String!
+}
+
+type BetPlaced @entity {
+  id: ID!
+  marketId: String!
+  user: Bytes!
+  outcomeIndex: String!  # Change this to BigInt
+  amount: String!  # Change this to BigInt
+}
+
+type MarketResolved @entity {
+  id: ID!
+  marketId: String!
+  winningOutcomeIndex: String!  # Change this to BigInt
+} 
+
+type WinningsWithdrawn @entity {
+  id: ID!
+  marketId: String!
+  user: Bytes!
+  amount: String!  # Change this to String
+}
