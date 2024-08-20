@@ -17,6 +17,7 @@ function TransactionStatus({ status, writeContractData }: { status: any, writeCo
     setConfirmation(true);
   };
 
+  console.log("writeContractData",writeContractData)
   // Reset the visibility of the popup when status changes, but only after the first render
   useEffect(() => {
     if (hasMounted.current) {
@@ -25,7 +26,7 @@ function TransactionStatus({ status, writeContractData }: { status: any, writeCo
     } else {
       hasMounted.current = true; // Set the ref to true after the first render
     }
-  }, [status]);
+  }, [status]); 
 
   const fetchTransactionReceipt = async () => {
     try {

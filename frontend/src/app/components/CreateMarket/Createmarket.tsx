@@ -102,7 +102,7 @@ function Createmarket() {
               {status && <p>{status}</p>}
           </div>
 
-          <TransactionStatus status={writeContractStatus} />
+          <TransactionStatus status={writeContractStatus} writeContractData={writeContractData} />
 
         </section>
           );
