@@ -20,28 +20,28 @@ function Footer() {
                     © Copyright 2024
                 </div>
                 <div className="footer__links">
-                    <a href="https://hedera.com/" target="_blank" rel="noopener noreferrer">
+                    <a href="https://climacompass.com/" target="_blank" rel="noopener noreferrer">
                         <FontAwesomeIcon icon={faGlobeSolid} /> Website
                     </a>
-                    <a href="https://x.com/hedera" target="_blank" rel="noopener noreferrer">
+                    <a href="https://x.com/climacompass" target="_blank" rel="noopener noreferrer">
                         <FontAwesomeIcon icon={faXTwitter} /> 
                     </a>
-                    <a href="https://www.facebook.com/hederanetwork/" target="_blank" rel="noopener noreferrer">
+                    <a href="https://www.facebook.com/climacompass/" target="_blank" rel="noopener noreferrer">
                         <FontAwesomeIcon icon={faFacebook} /> Facebook
                     </a>
-                    <a href="https://www.facebook.com/hederanetwork/" target="_blank" rel="noopener noreferrer">
+                    <a href="https://www.facebook.com/climacompass/" target="_blank" rel="noopener noreferrer">
                         <FontAwesomeIcon icon={faTelegram} /> Telegram
                     </a>
-                    <a href="https://discord.com/invite/uJ5k8DkmKV" target="_blank" rel="noopener noreferrer">
+                    <a href="https://discord.com/invite/climacompass" target="_blank" rel="noopener noreferrer">
                         <FontAwesomeIcon icon={faDiscord} /> Discord
                     </a>
-                    <a href="https://www.youtube.com/hederahashgraph" target="_blank" rel="noopener noreferrer">
+                    <a href="https://www.youtube.com/climacompass" target="_blank" rel="noopener noreferrer">
                         <FontAwesomeIcon icon={faYoutube} /> YouTube
                     </a>
-                    <a href="https://github.com/hashgraph" target="_blank" rel="noopener noreferrer">
+                    <a href="https://github.com/climacompass" target="_blank" rel="noopener noreferrer">
                         <FontAwesomeIcon icon={faGithub} /> GitHub
                     </a>
-                    <a href="https://medium.com/hedera" target="_blank" rel="noopener noreferrer">
+                    <a href="https://medium.com/climacompass" target="_blank" rel="noopener noreferrer">
                         <FontAwesomeIcon icon={faMedium} /> Medium
                     </a>
                 </div>
