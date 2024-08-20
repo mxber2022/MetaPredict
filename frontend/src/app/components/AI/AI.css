@@ -1,0 +1,17 @@
+/* AI.css */
+.ai-response {
+    padding: 20px;
+
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .ai-response h3 {
+    margin-top: 0;
+  }
+  
+  .ai-response pre {
+    white-space: pre-wrap; /* Preserve whitespace and wrap text */
+    word-break: break-word; /* Break long words */
+  }
+  

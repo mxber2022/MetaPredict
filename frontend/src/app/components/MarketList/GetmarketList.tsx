@@ -14,6 +14,7 @@ import TransactionStatus from '../TransactionStatus/TransactionStatus';
 import CommentPop from '../Comment/CommentPop';
 import WithdrawWinning from '../WithdrawWinning/WithdrawWinning';
 import AI from '../AI/AI';
+import Popup from '../Popup/Popup';
 
 const MY_QUERY = gql`
   query MyQuery {
@@ -43,6 +44,7 @@ function GetmarketList() {
   const { writeContract, isSuccess, data: writeContractData, status } = useWriteContract(); // create market
   const [amount, setAmount] = useState('');
   const [aiQuestion, setAiQuestion] = useState<string | null>(null);
+  const [isPopupVisible, setIsPopupVisible] = useState(false);
 
   const handleButtonClick = useCallback(
     async (marketId: string, outcome: string, amount: string, index: number) => {
@@ -76,8 +78,19 @@ function GetmarketList() {
     setSelectedMarket(market);
   };
 
+  // const handleAiClick = (question: string) => {
+  //   setAiQuestion(question); // Set the question to pass to the AI component
+  // };
   const handleAiClick = (question: string) => {
-    setAiQuestion(question); // Set the question to pass to the AI component
+    setAiQuestion(question);
+    setIsPopupVisible(true);
+    console.log("Popup should be visible:", isPopupVisible); // Debug
+  };
+  
+  const closePopupAi = () => {
+    setIsPopupVisible(false);
+    setAiQuestion(null);
+    console.log("Popup should be hidden:", isPopupVisible); // Debug
   };
 
   return (
@@ -124,16 +137,23 @@ function GetmarketList() {
                 <div className='amount-bottom'>
                   <GetMarketStatus marketId={Number(market.marketId)} />
                 </div>
-                <WithdrawWinning MarketId={market.marketId} />
-                <button onClick={() => handleAiClick(market.question)}>AI</button>
-                {aiQuestion && <AI question={aiQuestion} />}
+                <div className='route'>
+                  <div>
+                    <WithdrawWinning MarketId={market.marketId} />
+                  </div>
+                  <div>
+                    <button onClick={() => handleAiClick(market.question)}>Ask AI</button>
+                  </div>
+                </div>
               </div>
             );
           })}
         </div>
       </div>
       {/* Render the AI component when a question is selected */}
-      
+      <Popup isVisible={isPopupVisible} onClose={closePopupAi}>
+        {aiQuestion && <AI question={aiQuestion} />}
+      </Popup>
       {selectedMarket && <CommentPop market={selectedMarket} onClose={closePopup} />}
       <TransactionStatus status={status} writeContractData={writeContractData} />
     </section>

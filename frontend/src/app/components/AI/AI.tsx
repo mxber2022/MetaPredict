@@ -1,5 +1,6 @@
 "use client";
 
+import "./AI.css"
 import React, { useState, useEffect } from 'react';
 
 interface AIProps {

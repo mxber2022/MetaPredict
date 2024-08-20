@@ -1,0 +1,45 @@
+/* Popup.css */
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.popup-content {
+    background: #120f0f;
+    padding: 20px;
+    border-radius: 8px;
+    position: relative;
+    max-width: 600px;
+    width: 90vw; /* Make it responsive */
+    max-height: 80vh; /* Adjust as needed */
+    overflow-y: auto; /* Adds vertical scrollbar if needed */
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column; /* Stack children vertically */
+}
+
+.popup-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: transparent;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.popup-text {
+    overflow-wrap: break-word; /* Breaks long words */
+    word-wrap: break-word; /* Older browser support */
+    word-break: break-word; /* Ensures long words break */
+    white-space: normal; /* Allows text to wrap */
+    margin-bottom: 20px; /* Margin to avoid content sticking to close button */
+}

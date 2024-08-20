@@ -2,8 +2,8 @@
 
 .footer {
 
-    background-color: black;
-    border-top: 1px solid #2BEB7C;
+    background-color: #000;
+    border-top: 1px solid #0fb7264f;
     color: #fff;
     padding: 2rem 0;
 }
@@ -11,14 +11,19 @@
 .footer__container {
 
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     height: 100%;
     width: 100%;
     text-align: left;
     max-width: 1600px;
     padding: 0 2rem;
     margin: 0 auto;
+}
+
+.footer__links {
+
+    display: flex;
+    gap: 1rem;
 }
 
 
