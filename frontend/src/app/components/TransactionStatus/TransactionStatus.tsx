@@ -42,11 +42,11 @@ function TransactionStatus({ status, writeContractData }: { status: any, writeCo
   };
 
   useEffect(() => {
-    if (writeContractData && pendingConfirmation) {
+    if (writeContractData) {
       // Start fetching the receipt if pendingConfirmation is true
       fetchTransactionReceipt();
     }
-  }, [writeContractData, pendingConfirmation]);
+  }, [writeContractData]);
 
   return (
     <>
@@ -61,14 +61,23 @@ function TransactionStatus({ status, writeContractData }: { status: any, writeCo
 
           {status === 'success' && (
             <div className='success_popup'>
-              <Image src={CheckGif} alt="CheckGif" />
-              <p>
-                Success <br /><br />
-                <a href="#" onClick={closePopUp}>Close and return to the website</a>
+              
+             
+    
+              {pendingConfirmation && <p>Transaction pending</p>}
+              {
+              !pendingConfirmation && 
+              <>
+               <Image src={CheckGif} alt="CheckGif" />
+                <p>Transaction Confirmed</p>
+                <p>
+                {/* Success <br /><br /> */}
+                {/* <a href="#" onClick={closePopUp}>Close and return to the website</a> */}
+
               </p>
-              {/* Uncomment if needed to show confirmation status */}
-              {/* {pendingConfirmation && <p>Transaction pending</p>}
-              {!pendingConfirmation && <p>Transaction Confirmed</p>} */}
+              <p>Don't close the window <span className="dots"><span className="dot"></span><span className="dot"></span><span className="dot"></span></span></p>
+              </>
+              }
             </div>
           )}
         </div>
