@@ -1,0 +1,11 @@
+Flask==2.2.3
+langchain-openai==0.1.0
+langchain-sql-database==0.1.0
+langchain-experimental==0.1.0
+python-dotenv==1.0.0
+openmeteo-requests==0.0.1   # Replace with the actual version if available
+requests-cache==0.7.0
+retry-requests==0.0.3       # Replace with the actual version if available
+pandas==2.0.3
+sqlite3==3.35.5            # Replace with the version if necessary. sqlite3 is included with Python's standard library
+
