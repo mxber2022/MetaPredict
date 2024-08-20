@@ -1,84 +1,79 @@
-"use client"
-
-import "./TransactionStatus.css"
+import React, { useState, useEffect, useRef } from "react";
+import "./TransactionStatus.css";
 import ProccingGif from './Assets/proccing.webp';
 import CheckGif from './Assets/check.gif';
 import Image from "next/image";
-import React, { useState, useEffect } from "react";
-import { waitForTransactionReceipt } from '@wagmi/core'
+import { waitForTransactionReceipt } from '@wagmi/core';
 import { config } from './config';
-import { mainnet, sepolia, modeTestnet } from '@wagmi/core/chains'
 
-function TransactionStatus(status: any, writeContractData: any) {
-
+function TransactionStatus({ status, writeContractData }: { status: any, writeContractData: any }) {
   const [isPopupVisible, setIsPopupVisible] = useState(true);
+  const [pendingConfirmation, setConfirmation] = useState(true);
+  const hasMounted = useRef(false);  // Use useRef to track if the component has mounted
 
   const closePopUp = (e: any) => {
-    e.preventDefault(); 
+    e.preventDefault();
     setIsPopupVisible(false);
+    setConfirmation(true);
   };
 
-  // Reset the visibility of the popup whenever the status changes
+  // Reset the visibility of the popup when status changes, but only after the first render
   useEffect(() => {
-    setIsPopupVisible(true);
+    if (hasMounted.current) {
+      setIsPopupVisible(true);
+      setConfirmation(true);
+    } else {
+      hasMounted.current = true; // Set the ref to true after the first render
+    }
   }, [status]);
-
-  // const transactionReceipt = waitForTransactionReceipt( config,{ 
-  //   confirmations: 10, 
-  //   //@ts-ignore
-  //   hash: writeContractData?.writeContractData
-  // })
-
 
   const fetchTransactionReceipt = async () => {
     try {
-        console.log("help");
-        const receipt = await waitForTransactionReceipt(config, {
-          confirmations: 10,
-          chainId: modeTestnet.id,
-          hash: status.writeContractData,
-        });
-      console.log('Transaction receipt:', receipt);
-    } 
-    catch (error) {
+      const transactionReceipt = await waitForTransactionReceipt(config, {
+        confirmations: 2,
+        hash: writeContractData,
+      });
+      console.log('Transaction receipt:', transactionReceipt);
+      setConfirmation(false);
+    } catch (error) {
       console.error('Error fetching transaction receipt:', error);
     }
   };
 
-  if(status.writeContractData != undefined) {
-    console.log("helll", status.writeContractData);
-    fetchTransactionReceipt();
-  }
+  useEffect(() => {
+    if (writeContractData && pendingConfirmation) {
+      // Start fetching the receipt if pendingConfirmation is true
+      fetchTransactionReceipt();
+    }
+  }, [writeContractData, pendingConfirmation]);
 
-  return(
+  return (
     <>
-    {
-      isPopupVisible && (
-        <div className={`proccing ${status.status === 'pending' ? 'pending' : status.status === 'success' ? 'done' : ''}`}>
-            {status.status === 'pending' && (
-              <div className='pending_popup'>
-                <Image src={ProccingGif} alt="Processing GIF" />
-                <p>
-                  Don't close the window
-                </p>
-              </div>
-            )}
+      {isPopupVisible && (
+        <div className={`proccing ${status === 'pending' ? 'pending' : status === 'success' ? 'done' : ''}`}>
+          {status === 'pending' && (
+            <div className='pending_popup'>
+              <Image src={ProccingGif} alt="Processing GIF" />
+              <p>Don't close the window</p>
+            </div>
+          )}
 
-              {status.status === 'success' && (
-                <div className='success_popup'>
-                  <Image src={CheckGif} alt="CheckGif" />
-                  <p>
-                    Success <br /><br />
-                    <a href="#" onClick={closePopUp}>Close and return to the website</a>
-                  </p>
-                  {/* <div className="thash">
-                    <p>{status.writeContractData}</p>
-                  </div> */}
-                </div>
-              )}
+          {status === 'success' && (
+            <div className='success_popup'>
+              <Image src={CheckGif} alt="CheckGif" />
+              <p>
+                Success <br /><br />
+                <a href="#" onClick={closePopUp}>Close and return to the website</a>
+              </p>
+              {/* Uncomment if needed to show confirmation status */}
+              {/* {pendingConfirmation && <p>Transaction pending</p>}
+              {!pendingConfirmation && <p>Transaction Confirmed</p>} */}
+            </div>
+          )}
         </div>
-    )}
+      )}
     </>
-  )
+  );
 }
+
 export default TransactionStatus;
