@@ -2,7 +2,7 @@
 
 .createMarket {
 
-    padding: 6rem 0;
+    padding: 9rem 0;
     background-color: #000;
     color: #fff;
 }
@@ -27,7 +27,8 @@
 .createMarket h2 {
 
     color: #fff;
-    font-size: 3rem;
+    font-family: "Mario Kart DS";
+    font-size: 3.8rem;
     font-weight: bold;
     max-width: 600px;
     margin: 0 auto;
@@ -37,22 +38,25 @@
 
 .createMarket button {
 
-    background-color: #2BEB7C;
-    color: #000;
+    background-color: transparent;
+    border: 1.9px solid #2BEB7C;
+    color: #2BEB7C;
+    font-family: "Minecraft";
     font-weight: bold;
     width: max-content;
-    box-shadow: 0 0 10px #2BEB7C;
+    letter-spacing: 2.5px;
 }
 
 .createMarket label {
 
     color: #fff;
+    font-family: "Akkurat-Mono";
     margin-bottom: 0.5rem;
     display: inline-block;
 }
 
 .createMarket input {
-
+    font-family: "Akkurat-Mono";
     color: #000;
 }
 
@@ -98,3 +102,9 @@
     float: right;
 }
 
+.btnright:hover {
+    transform: translateY(-2px);
+}
+.btnsub:hover {
+    transform: translateY(-2px);
+}

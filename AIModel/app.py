@@ -3,6 +3,7 @@ from flask_cors import CORS  # Import the CORS class
 from langchain_openai import OpenAI
 from langchain.sql_database import SQLDatabase
 from langchain_experimental.sql import SQLDatabaseChain
+from apikey import apikey
 from dotenv import load_dotenv
 import os
 
@@ -15,7 +16,7 @@ CORS(app)  # Enable CORS for all routes by default
 # Initialize the database and LLM
 dburi = "sqlite:///testDatabase.db" 
 db = SQLDatabase.from_uri(dburi)
-llm = OpenAI(temperature=0, api_key=os.getenv('OPENAI_API_KEY'))
+llm = OpenAI(temperature=0, api_key=apikey)
 db_chain = SQLDatabaseChain(llm=llm, database=db, verbose=True)
 
 @app.route('/query', methods=['POST'])

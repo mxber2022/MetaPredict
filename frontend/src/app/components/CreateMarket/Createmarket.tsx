@@ -56,7 +56,7 @@ function Createmarket() {
     return (
         <section className='createMarket'>
           <div className='createMarket__container'>
-            <h2>Create Market</h2>
+            <h2>create market</h2>
               <form onSubmit={createMarket}>
                   <div>
                     <label>Market Question:</label>
@@ -95,9 +95,9 @@ function Createmarket() {
                         )}
                       </div>
                     ))}
-                    <button className='btnright' type="button" onClick={addOutcome}> Add Outcome </button>
+                    <button className='btnright' type="button" onClick={addOutcome}> Add Outcome?! </button>
                   </div>
-                  <button type="submit">Create Market</button>
+                  <button className='btnsub' type="submit">Create Market</button>
               </form>
               {status && <p>{status}</p>}
           </div>
