@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useState, useEffect } from 'react';
 import { useQuery, gql } from '@apollo/client';
 import { useWriteContract } from 'wagmi';
 import { abi } from '../../../abi';
@@ -41,7 +41,7 @@ interface MyQueryData {
 
 function GetmarketList() {
   const [selectedMarket, setSelectedMarket] = useState<MarketCreated | null>(null);
-  const { loading, error, data } = useQuery<MyQueryData>(MY_QUERY);
+  const { loading, error, data, refetch } = useQuery<MyQueryData>(MY_QUERY);
   const { writeContract, isSuccess, data: writeContractData, status } = useWriteContract(); // create market
   const [amount, setAmount] = useState('');
   const [aiQuestion, setAiQuestion] = useState<string | null>(null);
@@ -107,7 +107,10 @@ function GetmarketList() {
     setIsPopupVisible1(true);
   };
 
-
+ 
+  if (isSuccess) {
+    refetch();  // Refetch the data after a successful transaction
+  }
 
   return (
     <section className='marketList'>
