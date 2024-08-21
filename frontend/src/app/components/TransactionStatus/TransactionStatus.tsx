@@ -64,7 +64,11 @@ function TransactionStatus({ status, writeContractData }: { status: any, writeCo
               
              
     
-              {pendingConfirmation && <p>Transaction pending</p>}
+              {
+              pendingConfirmation && 
+              <p>Transaction pending</p>
+              }
+
               {
               !pendingConfirmation && 
               <>

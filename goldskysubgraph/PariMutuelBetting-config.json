@@ -9,8 +9,8 @@
   "instances": [
     {
       "abi": "PariMutuelBetting",
-      "address": "0x26f8b0177d2173e0aB9B3Bb63899dB98DdEe3898",
-      "startBlock": 6335407,
+      "address": "0x1829463fbEb0BEE9774313BA087B31023d2f1e29",
+      "startBlock": 6540101,
       "chain": "sepolia"
     }
   ]

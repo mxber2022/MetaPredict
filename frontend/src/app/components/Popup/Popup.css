@@ -14,11 +14,11 @@
 
 .popup-content {
     background: #120f0f;
-    padding: 20px;
+    padding: 50px;
     border-radius: 8px;
     position: relative;
-    max-width: 600px;
-    width: 90vw; /* Make it responsive */
+    /* max-width: 600px;
+    width: 90vw; Make it responsive */
     max-height: 80vh; /* Adjust as needed */
     overflow-y: auto; /* Adds vertical scrollbar if needed */
     box-sizing: border-box;
