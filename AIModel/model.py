@@ -96,10 +96,12 @@ df.to_sql(table_name, conn, if_exists='replace', index=False)
 # air quality
 url = "https://air-quality-api.open-meteo.com/v1/air-quality"
 params = {
-	"latitude": 52.52,
-	"longitude": 13.41,
+	"latitude": 51.5,
+	"longitude": 10.5,
 	"current": ["european_aqi", "us_aqi", "pm10", "pm2_5", "carbon_monoxide", "nitrogen_dioxide", "sulphur_dioxide", "ozone", "aerosol_optical_depth", "dust", "uv_index", "uv_index_clear_sky"],
-	"hourly": ["pm10", "pm2_5", "carbon_monoxide", "nitrogen_dioxide", "sulphur_dioxide", "ozone", "aerosol_optical_depth", "dust", "uv_index", "uv_index_clear_sky", "european_aqi", "european_aqi_pm2_5", "european_aqi_pm10", "european_aqi_nitrogen_dioxide", "european_aqi_ozone", "european_aqi_sulphur_dioxide", "us_aqi", "us_aqi_pm2_5", "us_aqi_pm10", "us_aqi_nitrogen_dioxide", "us_aqi_carbon_monoxide", "us_aqi_ozone", "us_aqi_sulphur_dioxide"]
+	"hourly": ["pm10", "pm2_5", "carbon_monoxide", "nitrogen_dioxide", "sulphur_dioxide", "ozone", "aerosol_optical_depth", "dust", "uv_index", "uv_index_clear_sky", "european_aqi", "european_aqi_pm2_5", "european_aqi_pm10", "european_aqi_nitrogen_dioxide", "european_aqi_ozone", "european_aqi_sulphur_dioxide", "us_aqi", "us_aqi_pm2_5", "us_aqi_pm10", "us_aqi_nitrogen_dioxide", "us_aqi_carbon_monoxide", "us_aqi_ozone", "us_aqi_sulphur_dioxide"],
+	"past_days": 92,
+	"forecast_days": 7
 }
 responses = openmeteo.weather_api(url, params=params)
 
@@ -210,3 +212,59 @@ df = pd.read_csv(csv_file)
 conn = sqlite3.connect(sqlite_db)
 df.to_sql(table_name, conn, if_exists='replace', index=False)
 
+# flood
+url = "https://flood-api.open-meteo.com/v1/flood"
+params = {
+	"latitude": 51.5,
+	"longitude": 10.5,
+	"daily": ["river_discharge", "river_discharge_mean", "river_discharge_median", "river_discharge_max", "river_discharge_min", "river_discharge_p25", "river_discharge_p75"],
+	"past_days": 92,
+	"models": ["seamless_v4", "forecast_v4", "consolidated_v4"]
+}
+responses = openmeteo.weather_api(url, params=params)
+
+# Process first location. Add a for-loop for multiple locations or weather models
+response = responses[0]
+print(f"Coordinates {response.Latitude()}°N {response.Longitude()}°E")
+print(f"Elevation {response.Elevation()} m asl")
+print(f"Timezone {response.Timezone()} {response.TimezoneAbbreviation()}")
+print(f"Timezone difference to GMT+0 {response.UtcOffsetSeconds()} s")
+
+# Process daily data. The order of variables needs to be the same as requested.
+daily = response.Daily()
+daily_river_discharge = daily.Variables(0).ValuesAsNumpy()
+daily_river_discharge_mean = daily.Variables(1).ValuesAsNumpy()
+daily_river_discharge_median = daily.Variables(2).ValuesAsNumpy()
+daily_river_discharge_max = daily.Variables(3).ValuesAsNumpy()
+daily_river_discharge_min = daily.Variables(4).ValuesAsNumpy()
+daily_river_discharge_p25 = daily.Variables(5).ValuesAsNumpy()
+daily_river_discharge_p75 = daily.Variables(6).ValuesAsNumpy()
+
+daily_data = {"date": pd.date_range(
+	start = pd.to_datetime(daily.Time(), unit = "s", utc = True),
+	end = pd.to_datetime(daily.TimeEnd(), unit = "s", utc = True),
+	freq = pd.Timedelta(seconds = daily.Interval()),
+	inclusive = "left"
+)}
+daily_data["river_discharge"] = daily_river_discharge
+daily_data["river_discharge_mean"] = daily_river_discharge_mean
+daily_data["river_discharge_median"] = daily_river_discharge_median
+daily_data["river_discharge_max"] = daily_river_discharge_max
+daily_data["river_discharge_min"] = daily_river_discharge_min
+daily_data["river_discharge_p25"] = daily_river_discharge_p25
+daily_data["river_discharge_p75"] = daily_river_discharge_p75
+
+daily_dataframe = pd.DataFrame(data = daily_data)
+daily_dataframe.to_csv('dailyDFFlood.csv', index=False)
+df = pd.read_csv('/Users/aarshochatterjee/Documents/models/prediction_market/dailyDFFlood.csv')
+df_cleaned = df.dropna(axis=1, how='all')
+df_cleaned.to_csv('dailyDFFlood.csv', index=False)
+
+# converting the csv to sqlite db
+csv_file = '/Users/aarshochatterjee/Documents/models/prediction_market/dailyDFFlood.csv'
+sqlite_db = 'testDatabase.db'
+table_name = 'Flood'
+
+df = pd.read_csv(csv_file)
+conn = sqlite3.connect(sqlite_db)
+df.to_sql(table_name, conn, if_exists='replace', index=False)
