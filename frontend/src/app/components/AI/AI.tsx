@@ -14,7 +14,7 @@ const AI: React.FC<AIProps> = ({ question }) => {
   useEffect(() => {
     const fetchAIResponse = async () => {
       try {
-        const res = await fetch('https://web3-hack-berlin-6h1s.vercel.ap/query', {
+        const res = await fetch('https://web3-hack-berlin-6h1s.vercel.app/query', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
