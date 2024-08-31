@@ -35,7 +35,7 @@ function Header() {
                     <pre style={{ color: "white" }}>
         {`
         +----------------------------+       +----------------------------+       +----------------------------+
-        |                            |       |   Cross-Chain Messaging    |       |     Ethereum Sepolia       |
+        |                            |       |   Cross-Chain Messaging    |       |     Arbitrum Sepolia       |
         | - Prediction Market Smart  |<----->| - Listens to Events        |<----->| - Mirror Market Creation   |
         |   Contract (createMarket)  |       | - Relays Market Data       |       |   destination chain        |
         |                            |       | - Uses Wormhole            |       |                            |
