@@ -30,11 +30,12 @@ function TransactionStatus({ status, writeContractData }: { status: any, writeCo
 
   const fetchTransactionReceipt = async () => {
     try {
-      const transactionReceipt = await waitForTransactionReceipt(config, {
-        confirmations: 2,
-        hash: writeContractData,
-      });
-      console.log('Transaction receipt:', transactionReceipt);
+      // const transactionReceipt = await waitForTransactionReceipt(config, {
+      //   confirmations: 2,
+      //   hash: writeContractData,
+      // });
+      await new Promise(resolve => setTimeout(resolve, 10000)); //optimism fix
+      console.log('Transaction receipt:', );
       setConfirmation(false);
     } catch (error) {
       console.error('Error fetching transaction receipt:', error);
