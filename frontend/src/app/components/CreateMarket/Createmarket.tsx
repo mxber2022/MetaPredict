@@ -6,6 +6,8 @@ import myconfig from '../../../myconfig.json'
 import { Address } from 'viem';
 import "./CreateMarket.css";
 import TransactionStatus from '../TransactionStatus/TransactionStatus';
+import { formatEther } from 'viem'
+import { useClient } from 'wagmi';
 
 function Createmarket() {
     
@@ -36,19 +38,28 @@ function Createmarket() {
     // Handler to create market
 
     const { writeContract, isSuccess, data: writeContractData, status: writeContractStatus, error } = useWriteContract()
-
+    const client = useClient();
     //@ts-ignore
     const createMarket = async (event) => {
         event.preventDefault();
+        let sourceContractAdress;
+
+        if(client?.chain.id == 11155420){
+          sourceContractAdress = myconfig.CONTRACT_ADDRESS_opSEPOLIA;
+        }
+
         writeContract({ 
             abi,
-            address: myconfig.CONTRACT_ADDRESS_BASE as Address,
-            functionName: 'createMarket', 
+            address: sourceContractAdress as Address,
+            functionName: 'sendCrossChainGreeting',  // createMarket
             args: [
+                10003, // Target Chain
+                myconfig.CONTRACT_ADDRESS_BASE as Address, // Target Address
                 question,
                 outcomes,
                 uri
             ],
+            value: BigInt("18000000000000000")
          })
     }; 
     console.log(error);

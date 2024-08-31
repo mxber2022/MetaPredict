@@ -53,10 +53,18 @@ function GetmarketList() {
       try {
         await writeContract({
           abi,
-          address: myconfig.CONTRACT_ADDRESS_BASE as Address,
-          functionName: 'placeBet',
-          args: [marketId, index],
-          value: parseEther(amount)
+          address: myconfig.CONTRACT_ADDRESS_opSEPOLIA as Address,
+          functionName: 'sendCrossChainDeposit',
+          args: [
+            10003,
+            "0x4EEc84B0f4Fb1c035013a673095b1E7e73ea63cc", 
+            "0x4EEc84B0f4Fb1c035013a673095b1E7e73ea63cc", 
+            parseEther(amount),
+            "0x0ee7F43c91Ca54DEEFb58B261A454B9E8b4FEe8B",
+            marketId, 
+            index],
+
+            value: BigInt("18000000000000000")
         });
       } catch (error) {
         console.error("Error placing bet:", error);

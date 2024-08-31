@@ -11,19 +11,22 @@ interface GetMarketStatusProps {
 
 const GetMarketStatus: React.FC<GetMarketStatusProps> = ({ marketId }) => {
 
-    const { data, isError, isLoading } = useReadContract({
+    const { data, isError, isLoading, error } = useReadContract({
         abi,
         address: myconfig.CONTRACT_ADDRESS_BASE as Address,
         functionName: 'getMarketDetails',
         args: [marketId],
+        chainId: 421614,
+       // config: config_wormhole,
     });
 
+    console.log("error", error);
     if (isLoading) return <div>Loading...</div>;
     if (isError) return <div>Error loading market status</div>;
     console.log("data:", data);
     
     
-    console.log("error", isError);
+   
     //@ts-ignore
     const totalPool = formatUnits(data?.[5], 18);
     //@ts-ignore
@@ -36,7 +39,7 @@ const GetMarketStatus: React.FC<GetMarketStatusProps> = ({ marketId }) => {
                     <h4>Total Pool</h4>
                 </div>
                 <div className='amountText'>
-                    <h4>{String(totalPool)} ETH</h4>
+                    <h4>{String(totalPool)} BET</h4>
                 </div>
             </div>
 
