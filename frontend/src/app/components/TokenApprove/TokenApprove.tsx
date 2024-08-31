@@ -7,11 +7,10 @@ import myconfig from '../../../myconfig.json'
 
 function TokenApprove() {
 
-    const tokenContract = "0xdE0D84e73CA37ee5bA156C50E03534609351c81f"
-    const approveTo = "0x7E1F4DC002b0FE69Cc6410AfD91444E301e42B09"
+    const tokenContract = "0x0ee7F43c91Ca54DEEFb58B261A454B9E8b4FEe8B"
+    const approveTo = "0xAaa906c8C2720c50B69a5Ba54B44253Ea1001C98"
     const amount = 19e17;    
     
-
     const { writeContract, isSuccess, data: writeContractData, status: writeContractStatus, error } = useWriteContract()
 
 
