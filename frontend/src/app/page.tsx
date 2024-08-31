@@ -15,7 +15,7 @@ export default function Home() {
       <Createmarket />
       {/* <Tabs/> */}
       <GetmarketList />
-      {/* <Header /> */}
+      <Header />
       <Footer />
       {/* <TokenApprove/> */}
   

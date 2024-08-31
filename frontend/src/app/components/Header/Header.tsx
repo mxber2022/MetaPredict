@@ -7,81 +7,56 @@ function Header() {
 
     const slides = [
         {
-            title: "VERIDICT",
+            title: "MetaPredict",
             content: (
                 <>
                     <h2>Decentralized Pari-Mutuel Betting Platform</h2>
                     <p><strong>Name:</strong> MX</p>
-                    <p><strong>Date:</strong> 20.Aug 2024</p>
-                    <p><strong>Goal: </strong>Revolutionizing the Prediction Market</p>
+                    <p><strong>Date:</strong> 31.Aug 2024</p>
+                    <p><strong>Goal: </strong>CrossChain the Prediction Market</p>
                 </>
             ),
         },
         {
-            title: "What is VERIDICT",
+            title: "What is MetaPredict",
             content: (
                 <>
                     <h2>Introduction</h2>
-                    <p><strong></strong> Prediction market based on Pari-Mutuel algorithm </p>
+                    <p><strong></strong> Crosschain Prediction Market </p>
+                    <p><strong></strong> Powered by Wormhole </p>
                 </>
             ),
         },
-        {
-            title: "How Pari-Mutuel Algorithm Works",
-            content: (
-                <>
-                    <h2>How Pari-Mutuel Algorithm Works</h2>
-                    <ul>
-                        <li><strong>Pooled System:</strong> All bets of a particular type are combined into a single pool.</li>
-                        <li><strong>Winning Amount Distribution:</strong> Payouts are distributed proportionally based on the amount bet on each outcome.</li>
-                    </ul>
-                    <ol>
-                        <li><strong>Collect Bets:</strong> Aggregate all bets placed on the specific event into a single pool.</li>
-                        <li><strong>Apply Deductions:</strong> Subtract the house takeout, taxes, and any other fees from the total pool.
-                        </li>
-                        <li><strong>Determine Winning Bets:</strong> Identify which bets are winners based on the event outcome.</li>
-                        <li><strong>Calculate Payouts:</strong> Distribute the net pool among the winning bets proportionally.
-                            <ul>
-                                <li>
-                                    <pre>
-                                        {`Payout per Winning Bet = (Net Pool / Total Amount Bet on Winning Outcome) * Amount Bet on Individual Winning Bet`}
-                                    </pre>
-                                </li>
-                            </ul>
-                        </li>
-                        <li><strong>Distribute Winnings:</strong> Payout amounts are credited to the accounts of those holding winning bets.</li>
-                    </ol>
-                </> 
-            ),
-        },
-        // {
-        //     title: "Platform Features",
-        //     content: (
-        //         <>
-        //             <h2>Platform Features</h2>
-        //             <ul>
-        //                 <li><strong>Decentralization:</strong> Powered by smart contracts on Ethereum, eliminating the need for intermediaries.</li>
-        //                 <li><strong>Transparency:</strong> All bets and market resolutions are recorded on the blockchain, ensuring fairness and visibility.</li>
-        //                 <li><strong>Automatic Payouts:</strong> Winnings are automatically distributed once a market is resolved.</li>
-        //                 <li><strong>Low Fees:</strong> Reduced operational costs due to the lack of intermediaries.</li>
-        //                 <li><strong>User-friendly Interface:</strong> Easy to create markets, place bets, and withdraw winnings.</li>
-        //             </ul>
-        //         </>
-        //     ),
-        // },
+
         {
             title: "Technical Architecture",
             content: (
                 <>
-                    <h2>Technical Architecture</h2>
-                    <ul>
-                        <li><strong>Blockchain:</strong> Hedera</li>
-                        <li><strong>Subgraph:</strong> Data provider</li>
-                        {/* <li><strong>Blockscout:</strong> SmartContract Verification</li> */}
-                    </ul>
+                    <pre style={{ color: "white" }}>
+        {`
+        +----------------------------+       +----------------------------+       +----------------------------+
+        |                            |       |   Cross-Chain Messaging    |       |     Ethereum Sepolia       |
+        | - Prediction Market Smart  |<----->| - Listens to Events        |<----->| - Mirror Market Creation   |
+        |   Contract (createMarket)  |       | - Relays Market Data       |       |   destination chain        |
+        |                            |       | - Uses Wormhole            |       |                            |
+        +----------------------------+       +----------------------------+       +----------------------------+
+                         ^                                                                
+                         |                                                                
+                                                                                            
+        +----------------------------+                                        
+        |        User (Frontend)     |                                         
+        |   Interacts with Market    |                                         
+        |   on source chainX         |                                         
+        |                            |                                         
+        +----------------------------+                                         
+        `}
+                    </pre>
                 </>
             ),
-        },
+        }
+        
+        
+,        
         {
             title: "Market Potential",
             content: (
@@ -115,7 +90,6 @@ function Header() {
                     <h2>Upcoming Fetures</h2>
                     <ul>
                         <li><strong>Phase 1:</strong> Using oracle to resolve market</li>
-                        <li><strong>Phase 1.1:</strong> Going Crosschain (LayerZero)</li>
                         <li><strong>Phase 2:</strong> Feature Expansion - Introduce advanced features like analytics, multi crypto currency support, and mobile apps.</li>
                         <li><strong>Phase 3:</strong> Community & Partnerships - Build a strong user base and form strategic partnerships.</li>
                         <li><strong>Phase 4:</strong> Global Scaling - Expand the platform’s reach to new markets.</li>
@@ -132,26 +106,6 @@ function Header() {
                 </>
             ),
         },
-        // {
-        //     title: "Team",
-        //     content: (
-        //         <>
-        //             <h2>Team</h2>
-        //             <p><strong></strong>MX</p>
-        //         </>
-        //     ),
-        // },
-        // {
-        //     title: "Conclusion & Call to Action",
-        //     content: (
-        //         <>
-        //             <h2>Conclusion & Call to Action</h2>
-        //             <p><strong>Summary:</strong> Recap the platform’s unique selling points, including decentralization, transparency, and potential market impact.</p>
-        //             <p><strong>Call to Action:</strong> Invite investors, partners, or collaborators to join the project. Provide contact information for follow-up discussions.</p>
-        //             <p><strong>Q&A:</strong> Open the floor for any questions from the audience.</p>
-        //         </>
-        //     ),
-        // },
     ];
 
     const nextSlide = () => {
